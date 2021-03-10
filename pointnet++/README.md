@@ -28,3 +28,14 @@ Can change the hyperparameters of training in 'train_source.py'
 classification_report.csv: the classfication report.  
 test.h5: the trained model.  
 
+## Citation
+
+
+```bibtex
+@inproceedings{qi2017pointnet++,
+  title={Pointnet++: Deep hierarchical feature learning on point sets in a metric space},
+  author={Qi, Charles Ruizhongtai and Yi, Li and Su, Hao and Guibas, Leonidas J},
+  booktitle={Advances in neural information processing systems},
+  pages={5099--5108},
+  year={2017}
+}
