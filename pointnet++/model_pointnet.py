@@ -54,7 +54,7 @@ class Pointnet_cls(nn.Module):
         else:
             return x, mid_feature
 
-print('model_pointnet ready')
+#print('model_pointnet ready')
 
 
 
