@@ -177,4 +177,4 @@ def get_edge_feature(x, n_neighbor):
     point_cloud_center = x.expand(-1, -1, -1, n_neighbor)
     edge_feature = torch.cat((point_cloud_center, point_cloud_neighbors-point_cloud_center), dim=1)
     return edge_feature
-
+print('point_utils.py ready')
