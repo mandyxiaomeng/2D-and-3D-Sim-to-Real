@@ -327,10 +327,10 @@ if __name__ == '__main__':
     dataframe_full.to_csv('classification_report.csv', index = False)
     time_pass = since - time.time()
     rows = zip(epo,o_acc,acc_los)
-    with open('output.csv', "w") as f:
-        writer = csv.writer(f)
-        for row in rows:
-            writer.writerow(row)
+    #with open('output.csv', "w") as f:
+        #writer = csv.writer(f)
+        #for row in rows:
+            #writer.writerow(row)
     print('Training complete in {:.0f}m {:.0f}s'.format(time_pass // 60, time_pass % 60))
     
 print(losss)
