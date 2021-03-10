@@ -1,7 +1,8 @@
 
 # Implement pointnet++ on industry data
 
-## prerequisites
+## Prerequisites
+Download library:
 - python 3.8
 - pytorch 1.7.0
 - cuda 11.0 or higher
@@ -15,15 +16,15 @@
 - tensorboardX
 
 ## Data
-Can put the customize data in Data folder in the same format, then change the path in train_source.py, line 27 and 48.
+Can put the customize data in 'data' folder in the same format, then change the path in 'train_source.py', line 27 and 48.
 
 ## train the model
     python train_source.py  
   
-Can train hyperparameters of training the train_source.py
+Can change the hyperparameters of training in 'train_source.py'
 
 ## output
 3 output files will come out:  
-classification_report.csv: the classfication report  
-test.h5: the trained model  
+classification_report.csv: the classfication report.  
+test.h5: the trained model.  
 
