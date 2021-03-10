@@ -103,9 +103,9 @@ def main():
     # Model
 
     model = PointNet_plus()
-    #model.to(device)
-    model = nn.DataParallel(model, device_ids=[1,0]) ###########for multi GPU
-    model = model.to(device=device)
+    model.to(device)
+    #model = nn.DataParallel(model, device_ids=[1,0]) ###########for multi GPU
+    #model = model.to(device=device)
 
     criterion = nn.CrossEntropyLoss()
     criterion = criterion.to(device=device)
