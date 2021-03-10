@@ -130,3 +130,4 @@ def pc_augment(pc):
     # pc = shift_point_cloud(pc)
     return pc
 
+print("data_utils.py ready")
