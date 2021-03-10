@@ -14,10 +14,16 @@
 - argparse
 - tensorboardX
 
+## Data
+Can put the customize data in Data folder in the same format, then change the path in train_source.py, line 27 and 48.
+
 ## train the model
-    python train_source.py
+    python train_source.py  
+  
+Can train hyperparameters of training the train_source.py
 
 ## output
-3 output files will come out:
-classification_report.csv: the classfication report
-test.h5: the trained model
+3 output files will come out:  
+classification_report.csv: the classfication report  
+test.h5: the trained model  
+
