@@ -416,3 +416,4 @@ class PointNet_plus(nn.Module):
                 m.weight.data.normal_(0, 0.01)
                 m.bias.data.zero_()
 
+print('pointnet_plus ready')
