@@ -46,12 +46,7 @@ class pascal_voc_cad(imdb):
         self._devkit_path = cfg_d.PASCALCAD#self._get_default_path() if devkit_path is None \
             #else devkit_path
         self._data_path = os.path.join(self._devkit_path, 'VOC' + self._year)
-        self._classes = ('__background__',  # always index 0
-                         'aeroplane', 'bicycle', 'bird', 'boat',
-                         'bottle', 'bus', 'car', 'cat', 'chair',
-                         'cow', 'diningtable', 'dog', 'horse',
-                         'motorbike', 'person', 'pottedplant',
-                         'sheep', 'sofa', 'train', 'tvmonitor')
+
         self._classes = ('__background__',  # always index 0
                         'front_wheel_with_screw','front_wheel_without_screw','back_wheel_with_screw','back_wheel_without_screw')
         self._class_to_ind = dict(zip(self.classes, xrange(self.num_classes)))
