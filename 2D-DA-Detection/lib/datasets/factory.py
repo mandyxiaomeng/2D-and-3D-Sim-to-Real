@@ -69,13 +69,13 @@ for year in ['2007']:
 
 for year in ['2007', '2012']:
   for split in ['train', 'val', 'trainval', 'test']:
-    name = 'voc_{}_{}'.format(year, split)
-    __sets[name] = (lambda split=split, year=year: pascal_voc(split, year))
+    name = 'voc_cad_{}_{}'.format(year, split)
+    __sets[name] = (lambda split=split, year=year: pascal_voc_cad(split, year))
 
 for year in ['2007', '2012']:
   for split in ['train', 'val', 'trainval', 'test']:
-    name = 'voc_{}_{}'.format(year, split)
-    __sets[name] = (lambda split=split, year=year: pascal_voc(split, year))
+    name = 'voc_cam_{}_{}'.format(year, split)
+    __sets[name] = (lambda split=split, year=year: pascal_voc_cam(split, year))
 
 def get_imdb(name):
   """Get an imdb (image database) by name."""
