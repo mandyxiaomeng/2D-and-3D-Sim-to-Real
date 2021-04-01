@@ -376,8 +376,8 @@ class pascal_voc_cad(imdb):
 
 
 if __name__ == '__main__':
-    d = pascal_voc('trainval', '2007')
-    res = d.roidb
+    detection = pascal_voc_cad('trainval', '2007')
+    res = detection.roidb
     from IPython import embed;
 
     embed()
