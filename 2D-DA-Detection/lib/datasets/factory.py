@@ -23,6 +23,9 @@ from datasets.cityscape import cityscape
 from datasets.cityscape_car import cityscape_car
 from datasets.foggy_cityscape import foggy_cityscape
 
+from dataset.pascal_voc_cad import pascal_voc_cad
+from dataset.pascal_voc_cam import pascal_voc_cam
+
 import numpy as np
 for split in ['train', 'trainval','val','test']:
   name = 'cityscape_{}'.format(split)
