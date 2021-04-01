@@ -136,9 +136,14 @@ class pascal_voc_cam(imdb):
         return gt_roidb
 
     def available_year(self):
-        #if the voc data is in year 2007:
+        #current vision code only apply on voc data in year 2007:
         available_year = 2007
         return available_year
+
+    def inavailable_year(self):
+        #current vision code didn't apply on voc data after year 2010:
+        inavailable_year = 2010
+        return inavailable_year
 
 
     def selective_search_roidb(self):
@@ -312,7 +317,8 @@ class pascal_voc_cam(imdb):
         cachedir = os.path.join(self._devkit_path, 'annotations_cache')
         aps = []
         # The PASCAL VOC metric changed in 2010
-        use_07_metric = True if int(self._year) < 2010 else False
+        inavailable_year = inavailable_year()
+        use_07_metric = True if int(self._year) < inavailable_year else False
         print('VOC07 metric? ' + ('Yes' if use_07_metric else 'No'))
         if not os.path.isdir(output_dir):
             os.mkdir(output_dir)
