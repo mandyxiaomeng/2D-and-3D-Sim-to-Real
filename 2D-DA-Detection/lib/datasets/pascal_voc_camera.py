@@ -135,6 +135,12 @@ class pascal_voc_cam(imdb):
 
         return gt_roidb
 
+    def available_year(self):
+        #if the voc data is in year 2007:
+        available_year = 2007
+        return available_year
+
+
     def selective_search_roidb(self):
         """
         Return the database of selective search regions of interest.
@@ -150,8 +156,8 @@ class pascal_voc_cam(imdb):
                 roidb = pickle.load(fid)
             print('{} ss roidb loaded from {}'.format(self.name, cache_file))
             return roidb
-
-        if int(self._year) == 2007 or self._image_set != 'test':
+        available_year = available_year()
+        if int(self._year) == available_year or self._image_set != 'test':
             gt_roidb = self.gt_roidb()
             ss_roidb = self._load_selective_search_roidb(gt_roidb)
             roidb = imdb.merge_roidbs(gt_roidb, ss_roidb)
@@ -164,7 +170,8 @@ class pascal_voc_cam(imdb):
         return roidb
 
     def rpn_roidb(self):
-        if int(self._year) == 2007 or self._image_set != 'test':
+        available_year = available_year()
+        if int(self._year) == available_year or self._image_set != 'test':
             gt_roidb = self.gt_roidb()
             rpn_roidb = self._load_rpn_roidb(gt_roidb)
             roidb = imdb.merge_roidbs(gt_roidb, rpn_roidb)
