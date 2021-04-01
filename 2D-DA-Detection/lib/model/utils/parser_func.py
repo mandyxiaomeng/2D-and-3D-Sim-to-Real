@@ -112,131 +112,166 @@ def parse_args():
     return args
 
 def set_dataset_args(args, test=False):
-    if not test:
-        if args.dataset == "pascal_voc":
-            args.imdb_name = "voc_2007_trainval"
-            args.imdbval_name = "voc_2007_test"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-        elif args.dataset == "pascal_voc_water":
-            args.imdb_name = "voc_water_2007_trainval+voc_water_2012_trainval"
-            args.imdbval_name = "voc_clipart_2007_trainval+voc_clipart_2012_trainval"
-            args.imdb_name_cycle = "voc_cyclewater_2007_trainval+voc_cyclewater_2012_trainval"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-        elif args.dataset == "pascal_voc_cycleclipart":
-            args.imdb_name = "voc_cycleclipart_2007_trainval+voc_cycleclipart_2012_trainval"
-            args.imdbval_name = "voc_cycleclipart_2007_trainval+voc_cycleclipart_2012_trainval"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-        elif args.dataset == "pascal_voc_cyclewater":
-            args.imdb_name = "voc_cyclewater_2007_trainval+voc_cyclewater_2012_trainval"
-            args.imdbval_name = "voc_cyclewater_2007_trainval+voc_cyclewater_2012_trainval"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-        elif args.dataset == "pascal_voc_0712":
-            args.imdb_name = "voc_2007_trainval+voc_2012_trainval"
-            args.imdbval_name = "voc_2007_test"
-            args.imdb_name_cycle = "voc_cycleclipart_2007_trainval+voc_cycleclipart_2012_trainval"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-        elif args.dataset == "foggy_cityscape":
-            args.imdb_name = "foggy_cityscape_trainval"
-            args.imdbval_name = "foggy_cityscape_trainval"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                             '30']
-        elif args.dataset == "vg":
-            args.imdb_name = "vg_150-50-50_minitrain"
-            args.imdbval_name = "vg_150-50-50_minival"
-            args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
-        elif args.dataset == "cityscape":
-            args.imdb_name = "cityscape_trainval"
-            args.imdbval_name = "cityscape_trainval"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                             '30']
-        elif args.dataset == "sim10k":
-            args.imdb_name = "sim10k_train"
-            args.imdbval_name = "sim10k_train"
-            args.imdb_name_cycle = "sim10k_cycle_train"  # "voc_cyclewater_2007_trainval+voc_cyclewater_2012_trainval"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
-        elif args.dataset == "sim10k_cycle":
-            args.imdb_name = "sim10k_cycle_train"
-            args.imdbval_name = "sim10k_cycle_train"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
 
-        ## cityscape dataset for only car classes.
-        # elif args.dataset == "cityscape_kitti":
-        #     args.imdb_name = "cityscape_kitti_trainval"
-        #     args.imdbval_name = "cityscape_kitti_trainval"
-        #     args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-        #                      '30']
-        if args.dataset_t == "water":
-            args.imdb_name_target = "water_train"
-            args.imdbval_name_target = "water_train"
-            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                             '20']
-        elif args.dataset_t == "clipart":
-            args.imdb_name_target = "clipart_trainval"
-            args.imdbval_name_target = "clipart_test"
-            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                                    '20']
-        elif args.dataset_t == "cityscape":
-            args.imdb_name_target = "cityscape_trainval"
-            args.imdbval_name_target = "cityscape_trainval"
-            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                                    '30']
-        ## cityscape dataset for only car classes.
-        elif args.dataset_t == "cityscape_car":
-            args.imdb_name_target = "cityscape_car_trainval"
-            args.imdbval_name_target = "cityscape_car_trainval"
-            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                                    '20']
-        # elif args.dataset_t == "kitti":
-        #     args.imdb_name_target = "kitti_trainval"
-        #     args.imdbval_name_target = "kitti_trainval"
-        #     args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-        #                             '20']
-        elif args.dataset_t == "foggy_cityscape":
-            args.imdb_name_target = "foggy_cityscape_trainval"
-            args.imdbval_name_target = "foggy_cityscape_trainval"
-            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                                    '30']
-    else:
-        if args.dataset == "pascal_voc":
-            args.imdb_name = "voc_2007_trainval"
-            args.imdbval_name = "voc_2007_test"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
-        elif args.dataset == "pascal_voc_0712":
-            args.imdb_name = "voc_2007_trainval+voc_2012_trainval"
-            args.imdbval_name = "voc_2007_test"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
-        elif args.dataset == "sim10k":
-            args.imdb_name = "sim10k_val"
-            args.imdbval_name = "sim10k_val"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                             '30']
-        elif args.dataset == "cityscape":
-            args.imdb_name = "cityscape_val"
-            args.imdbval_name = "cityscape_val"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
-        elif args.dataset == "foggy_cityscape":
-            args.imdb_name = "foggy_cityscape_test"
-            args.imdbval_name = "foggy_cityscape_test"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
-        elif args.dataset == "cityscape_kitti":
-            args.imdb_name = "cityscape_kitti_val"
-            args.imdbval_name = "cityscape_kitti_val"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
-        elif args.dataset == "water":
-            args.imdb_name = "water_test"
-            args.imdbval_name = "water_test"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+    if args.dataset == "pascal_voc":
+        args.imdb_name = "voc_2007_trainval"
+        args.imdbval_name = "voc_2007_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+
+    elif args.dataset == "pascal_voc_cad":
+        args.imdb_name = "voc_cad_2007_trainval"
+        args.imdbval_name = "voc_cad_2007_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+
+    elif args.dataset == "pascal_voc_cam":
+        args.imdb_name = "voc_cam_2007_trainval"
+        args.imdbval_name = "voc_cam_2007_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+
+
+    elif args.dataset == "pascal_voc_water":
+        args.imdb_name = "voc_water_2007_trainval+voc_water_2012_trainval"
+        args.imdbval_name = "voc_clipart_2007_trainval+voc_clipart_2012_trainval"
+        args.imdb_name_cycle = "voc_cyclewater_2007_trainval+voc_cyclewater_2012_trainval"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+
+    elif args.dataset == "pascal_voc_cycleclipart":
+        args.imdb_name = "voc_cycleclipart_2007_trainval+voc_cycleclipart_2012_trainval"
+        args.imdbval_name = "voc_cycleclipart_2007_trainval+voc_cycleclipart_2012_trainval"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+
+    elif args.dataset == "pascal_voc_cyclewater":
+        args.imdb_name = "voc_cyclewater_2007_trainval+voc_cyclewater_2012_trainval"
+        args.imdbval_name = "voc_cyclewater_2007_trainval+voc_cyclewater_2012_trainval"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+
+    elif args.dataset == "pascal_voc_0712":
+        args.imdb_name = "voc_2007_trainval+voc_2012_trainval"
+        args.imdbval_name = "voc_2007_test"
+        args.imdb_name_cycle = "voc_cycleclipart_2007_trainval+voc_cycleclipart_2012_trainval"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+
+    elif args.dataset == "foggy_cityscape":
+        args.imdb_name = "foggy_cityscape_trainval"
+        args.imdbval_name = "foggy_cityscape_trainval"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                            '30']
+
+    elif args.dataset == "vg":
+        args.imdb_name = "vg_150-50-50_minitrain"
+        args.imdbval_name = "vg_150-50-50_minival"
+        args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
+    elif args.dataset == "cityscape":
+        args.imdb_name = "cityscape_trainval"
+        args.imdbval_name = "cityscape_trainval"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                            '30']
+    elif args.dataset == "sim10k":
+        args.imdb_name = "sim10k_train"
+        args.imdbval_name = "sim10k_train"
+        args.imdb_name_cycle = "sim10k_cycle_train"  # "voc_cyclewater_2007_trainval+voc_cyclewater_2012_trainval"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
+    elif args.dataset == "sim10k_cycle":
+        args.imdb_name = "sim10k_cycle_train"
+        args.imdbval_name = "sim10k_cycle_train"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
+
+    ## cityscape dataset for only car classes.
+    # elif args.dataset == "cityscape_kitti":
+    #     args.imdb_name = "cityscape_kitti_trainval"
+    #     args.imdbval_name = "cityscape_kitti_trainval"
+    #     args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+    #                      '30']
+    if args.dataset_t == "water":
+        args.imdb_name_target = "water_train"
+        args.imdbval_name_target = "water_train"
+        args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                            '20']
+    elif args.dataset_t == "clipart":
+        args.imdb_name_target = "clipart_trainval"
+        args.imdbval_name_target = "clipart_test"
+        args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                 '20']
-        elif args.dataset == "clipart":
-            args.imdb_name = "clipart_trainval"
-            args.imdbval_name = "clipart_trainval"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                             '20']
-        elif args.dataset == "cityscape_car":
-            args.imdb_name = "cityscape_car_val"
-            args.imdbval_name = "cityscape_car_val"
-            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                                    '20']
+    elif args.dataset_t == "cityscape":
+        args.imdb_name_target = "cityscape_trainval"
+        args.imdbval_name_target = "cityscape_trainval"
+        args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                                '30']
+    ## cityscape dataset for only car classes.
+    elif args.dataset_t == "cityscape_car":
+        args.imdb_name_target = "cityscape_car_trainval"
+        args.imdbval_name_target = "cityscape_car_trainval"
+        args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                                '20']
+    # elif args.dataset_t == "kitti":
+    #     args.imdb_name_target = "kitti_trainval"
+    #     args.imdbval_name_target = "kitti_trainval"
+    #     args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+    #                             '20']
+    elif args.dataset_t == "foggy_cityscape":
+        args.imdb_name_target = "foggy_cityscape_trainval"
+        args.imdbval_name_target = "foggy_cityscape_trainval"
+        args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                                '30']
+
+    args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
+
+    return args
+
+def set_dataset_args(args, test=True):
+
+    if args.dataset == "pascal_voc":
+        args.imdb_name = "voc_2007_trainval"
+        args.imdbval_name = "voc_2007_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
+
+    if args.dataset == "pascal_voc_cad":
+        args.imdb_name = "voc__cad_2007_trainval"
+        args.imdbval_name = "voc_cad_2007_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
+
+    if args.dataset == "pascal_voc_cam":
+        args.imdb_name = "voc_cam_2007_trainval"
+        args.imdbval_name = "voc_cam_2007_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
+
+    elif args.dataset == "pascal_voc_0712":
+        args.imdb_name = "voc_2007_trainval+voc_2012_trainval"
+        args.imdbval_name = "voc_2007_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
+    elif args.dataset == "sim10k":
+        args.imdb_name = "sim10k_val"
+        args.imdbval_name = "sim10k_val"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                            '30']
+    elif args.dataset == "cityscape":
+        args.imdb_name = "cityscape_val"
+        args.imdbval_name = "cityscape_val"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
+    elif args.dataset == "foggy_cityscape":
+        args.imdb_name = "foggy_cityscape_test"
+        args.imdbval_name = "foggy_cityscape_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
+    elif args.dataset == "cityscape_kitti":
+        args.imdb_name = "cityscape_kitti_val"
+        args.imdbval_name = "cityscape_kitti_val"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
+    elif args.dataset == "water":
+        args.imdb_name = "water_test"
+        args.imdbval_name = "water_test"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                            '20']
+    elif args.dataset == "clipart":
+        args.imdb_name = "clipart_trainval"
+        args.imdbval_name = "clipart_trainval"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                            '20']
+    elif args.dataset == "cityscape_car":
+        args.imdb_name = "cityscape_car_val"
+        args.imdbval_name = "cityscape_car_val"
+        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                                '20']
+                                
     args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
 
     return args
