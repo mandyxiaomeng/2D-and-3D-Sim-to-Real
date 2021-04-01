@@ -38,12 +38,12 @@ except NameError:
 # <<<< obsolete
 
 
-class pascal_voc_cad(imdb):
+class pascal_voc_cam(imdb):
     def __init__(self, image_set, year, devkit_path=None):
-        imdb.__init__(self, 'voc_cad_' + year + '_' + image_set)
+        imdb.__init__(self, 'voc_cam_' + year + '_' + image_set)
         self._year = year
         self._image_set = image_set
-        self._devkit_path = cfg_d.PASCALCAD#self._get_default_path() if devkit_path is None \
+        self._devkit_path = cfg_d.PASCALCAM#self._get_default_path() if devkit_path is None \
             #else devkit_path
         self._data_path = os.path.join(self._devkit_path, 'VOC' +  self._year)
 
@@ -110,7 +110,7 @@ class pascal_voc_cad(imdb):
         """
         Return the default path where PASCAL VOC is expected to be installed.
         """
-        return os.path.join(cfg.DATA_DIR, 'VOCdevkitCAD'+self._year)
+        return os.path.join(cfg.DATA_DIR, 'VOCdevkitCAM'+self._year)
 
     def gt_roidb(self):
         """
@@ -376,7 +376,7 @@ class pascal_voc_cad(imdb):
 
 
 if __name__ == '__main__':
-    detection = pascal_voc_cad('trainval', '2007')
+    detection = pascal_voc_cam('trainval', '2007')
     res = detection.roidb
     from IPython import embed;
 
