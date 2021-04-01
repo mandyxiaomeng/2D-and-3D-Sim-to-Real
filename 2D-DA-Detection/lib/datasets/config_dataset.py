@@ -18,10 +18,8 @@ cfg_d = __D
 __D.PASCAL = "/VOCdevkit"
 __D.PASCALCLIP = ""
 __D.PASCALWATER = "/VOCdevkit"
-__D.PASCAL = "/VOCdevkit"
-__D.PASCAL = "/VOCdevkit"
-
-
+__D.PASCALCAD = "/VOCdevkitCAD"
+__D.PASCALCAM = "/VOCdevkitCAM"
 
 #For these datasets, the directories under the path will be Annotations  ImageSets  JPEGImages."
 __D.CLIPART = "/clipart"
