@@ -66,6 +66,17 @@ for year in ['2007']:
   for split in ['train', 'test']:
     name = 'water_{}'.format(split)
     __sets[name] = (lambda split=split : water(split,year))
+
+for year in ['2007', '2012']:
+  for split in ['train', 'val', 'trainval', 'test']:
+    name = 'voc_{}_{}'.format(year, split)
+    __sets[name] = (lambda split=split, year=year: pascal_voc(split, year))
+
+for year in ['2007', '2012']:
+  for split in ['train', 'val', 'trainval', 'test']:
+    name = 'voc_{}_{}'.format(year, split)
+    __sets[name] = (lambda split=split, year=year: pascal_voc(split, year))
+
 def get_imdb(name):
   """Get an imdb (image database) by name."""
   if name not in __sets:
