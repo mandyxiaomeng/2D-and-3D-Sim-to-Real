@@ -111,7 +111,7 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-def set_dataset_args(args, test=False):
+def set_dataset_nottest_args(args, test=False):
 
     if args.dataset == "pascal_voc":
         args.imdb_name = "voc_2007_trainval"
@@ -218,7 +218,7 @@ def set_dataset_args(args, test=False):
 
     return args
 
-def set_dataset_args(args, test=True):
+def set_dataset__test_args(args, test=True):
 
     if args.dataset == "pascal_voc":
         args.imdb_name = "voc_2007_trainval"
