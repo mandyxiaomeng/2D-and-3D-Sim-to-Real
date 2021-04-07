@@ -33,14 +33,18 @@ def Finder(method, lowe_ratio):
 
     return kp1, des1, kp2, des2
 
-
 method = 'ORB'  # 'SIFT'
 lowe_ratio = 0.80
 kp1,des1,kp2,des2 = Finder(method,lowe_ratio)
 
 # BFMatcher with default params
-bf = cv.BFMatcher()
-matches = bf.knnMatch(des1,des2, k=2)
+def Match (des1,des2):
+    macher = cv.BFMatcher()
+    matches = macher.knnMatch(des1,des2,k=2)
+    return matches
+
+matches = Match (des1,des2)
+
 
 # Apply ratio test
 good = []
