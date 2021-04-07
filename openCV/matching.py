@@ -4,11 +4,11 @@ from matplotlib import pyplot as plt
 import os
 
 
-img1 = cv.imread('cam1.jpg',0)          # queryImage
-img2 = cv.imread('cad1.png',0) # trainImage
+query_image = cv.imread('cam1.jpg',0)          # queryImage
+img2 = cv.imread('cad1.png',0)          # trainImage
 
-print(img1.shape)
-img1 = cv.resize(img1,(800,600))
+print(query_image.shape)
+query_image = cv.resize(query_image,(800,600))
 
 method = 'ORB'  # 'SIFT'
 lowe_ratio = 0.80
@@ -19,7 +19,7 @@ elif method == 'SIFT':
     finder = cv.SIFT_create()
 
 # find the keypoints and descriptors with SIFT
-kp1, des1 = finder.detectAndCompute(img1,None)
+kp1, des1 = finder.detectAndCompute(query_image,None)
 kp2, des2 = finder.detectAndCompute(img2,None)
 
 # BFMatcher with default params
@@ -39,7 +39,7 @@ msg2 = 'there are %d good matches' % (len(good))
 print(msg1)
 print(msg2)
 
-img3 = cv.drawMatchesKnn(img1,kp1,img2,kp2,good, None, flags=2)
+img3 = cv.drawMatchesKnn(query_image,kp1,img2,kp2,good, None, flags=2)
 
 #font = cv.FONT_HERSHEY_SIMPLEX
 #cv.putText(img3,msg1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
