@@ -22,17 +22,21 @@ query_image = cv.resize(query_image,(width,height))
 #print(query_image.shape)
 #print(query_image.size)
 
+def Finder(method, lowe_ratio):
+    if method   == 'ORB':
+        finder = cv.ORB_create()
+    elif method == 'SIFT':
+        finder = cv.SIFT_create()
+
+    kp1, des1 = finder.detectAndCompute(query_image,None)
+    kp2, des2 = finder.detectAndCompute(train_image,None)
+
+    return kp1, des1, kp2, des2
+
+
 method = 'ORB'  # 'SIFT'
 lowe_ratio = 0.80
-
-if method   == 'ORB':
-    finder = cv.ORB_create()
-elif method == 'SIFT':
-    finder = cv.SIFT_create()
-
-# find the keypoints and descriptors with SIFT
-kp1, des1 = finder.detectAndCompute(query_image,None)
-kp2, des2 = finder.detectAndCompute(train_image,None)
+kp1,des1,kp2,des2 = Finder(method,lowe_ratio)
 
 # BFMatcher with default params
 bf = cv.BFMatcher()
