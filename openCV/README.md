@@ -1,4 +1,5 @@
-# Feature based image alignment model
+## Feature based image alignment model
 
-## apply the model
+### apply the model
     python matching.py  
+output save in ./output
