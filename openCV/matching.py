@@ -57,18 +57,18 @@ kp1, kp2, matches, good_matches = Matching (method, match, lowe_ratio)
 
 
 #Result
-msg1 = 'using %s with lowe_ratio %.2f' % (method, lowe_ratio)
-msg2 = 'there are %d good matches' % (len(good_matches))
+message_1 = 'using %s with lowe_ratio %.2f' % (method, lowe_ratio)
+message_2 = 'there are %d good matches' % (len(good_matches))
 
-print(msg1)
-print(msg2)
+print(message_1)
+print(message_2)
 
 img3 = cv.drawMatchesKnn(query_image,kp1,train_image,kp2,good_matches, None, flags=2)
 
 #print txt on the result image, save and plot result image
 font = cv.FONT_HERSHEY_SIMPLEX
-cv.putText(img3,msg1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
-cv.putText(img3,msg2,(10, 270), font, 0.8,(255,0,255),1,cv.LINE_AA)
+cv.putText(img3,message_1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
+cv.putText(img3,message_2,(10, 270), font, 0.8,(255,0,255),1,cv.LINE_AA)
 fname = 'output3_%s_%.2f.jpg' % (method, lowe_ratio)
 cv.imwrite(os.path.join('./output', fname), img3)
 
