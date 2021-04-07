@@ -3,25 +3,6 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 import os
 
-
-query_image = cv.imread('cam1.jpg',0)          # queryImage
-train_image = cv.imread('cad1.png',0)          # trainImage
-
-#print(query_image.shape)
-#print(train_image.shape)
-#print(query_image.size)
-#print(train_image.size)
-
-scale_percent = ((train_image.shape[1])/(query_image.shape[1]))/(50/100)
-
-width = int(query_image.shape[1] * scale_percent)
-height = int(query_image.shape[0] * scale_percent)
-
-query_image = cv.resize(query_image,(width,height))
-
-#print(query_image.shape)
-#print(query_image.size)
-
 def Matching (method, match, lowe_ratio):
     if method   == 'ORB':
         finder = cv.ORB_create()
@@ -47,6 +28,27 @@ def Matching (method, match, lowe_ratio):
 
     return kp1, kp2, matches, good_matches
 
+#read images
+query_image = cv.imread('cam1.jpg',0)          # queryImage
+train_image = cv.imread('cad1.png',0)          # trainImage
+
+
+# rize images
+#print(query_image.shape)
+#print(train_image.shape)
+#print(query_image.size)
+#print(train_image.size)
+scale_percent = ((train_image.shape[1])/(query_image.shape[1]))/(50/100)
+
+width = int(query_image.shape[1] * scale_percent)
+height = int(query_image.shape[0] * scale_percent)
+
+query_image = cv.resize(query_image,(width,height))
+
+#print(query_image.shape)
+#print(query_image.size)
+
+#Matching images
 method = 'ORB'  # 'SIFT'
 match = 'bf'
 lowe_ratio = 0.80
@@ -54,7 +56,7 @@ lowe_ratio = 0.80
 kp1, kp2, matches, good_matches = Matching (method, match, lowe_ratio)
 
 
-
+#Result
 msg1 = 'using %s with lowe_ratio %.2f' % (method, lowe_ratio)
 msg2 = 'there are %d good matches' % (len(good_matches))
 
