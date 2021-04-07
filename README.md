@@ -22,7 +22,7 @@ Domain adaptation model 1:
 Domain adaptation model 2:
 
 ## 5. OpenCV
-Image processing model
+Feature based image alignment model
 
 
 
