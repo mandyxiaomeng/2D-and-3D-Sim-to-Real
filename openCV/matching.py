@@ -7,8 +7,11 @@ import os
 query_image = cv.imread('cam1.jpg',0)          # queryImage
 train_image = cv.imread('cad1.png',0)          # trainImage
 
-print(query_image.shape)
-query_image = cv.resize(query_image,(800,600))
+#print(query_image.shape)
+
+width = 800
+height = 600
+query_image = cv.resize(query_image,(width,height))
 
 method = 'ORB'  # 'SIFT'
 lowe_ratio = 0.80
