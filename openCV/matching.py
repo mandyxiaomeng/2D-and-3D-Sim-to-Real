@@ -22,28 +22,28 @@ query_image = cv.resize(query_image,(width,height))
 #print(query_image.shape)
 #print(query_image.size)
 
-def Finder(method, lowe_ratio):
+def Matching (method, match):
     if method   == 'ORB':
         finder = cv.ORB_create()
     elif method == 'SIFT':
         finder = cv.SIFT_create()
 
+    # BFMatcher with default params
+    if match  == 'bf':
+        matcher = cv.BFMatcher()
+
     kp1, des1 = finder.detectAndCompute(query_image,None)
     kp2, des2 = finder.detectAndCompute(train_image,None)
 
-    return kp1, des1, kp2, des2
+    matches = matcher.knnMatch(des1,des2,k=2)
+
+    return kp1, kp2, matches
 
 method = 'ORB'  # 'SIFT'
+match = 'bf'
 lowe_ratio = 0.80
-kp1,des1,kp2,des2 = Finder(method,lowe_ratio)
 
-# BFMatcher with default params
-def Match (des1,des2):
-    macher = cv.BFMatcher()
-    matches = macher.knnMatch(des1,des2,k=2)
-    return matches
-
-matches = Match (des1,des2)
+kp1, kp2, matches = Matching (method, match)
 
 
 # Apply ratio test
