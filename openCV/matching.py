@@ -5,7 +5,7 @@ import os
 
 
 query_image = cv.imread('cam1.jpg',0)          # queryImage
-img2 = cv.imread('cad1.png',0)          # trainImage
+train_image = cv.imread('cad1.png',0)          # trainImage
 
 print(query_image.shape)
 query_image = cv.resize(query_image,(800,600))
@@ -20,7 +20,7 @@ elif method == 'SIFT':
 
 # find the keypoints and descriptors with SIFT
 kp1, des1 = finder.detectAndCompute(query_image,None)
-kp2, des2 = finder.detectAndCompute(img2,None)
+kp2, des2 = finder.detectAndCompute(train_image,None)
 
 # BFMatcher with default params
 bf = cv.BFMatcher()
@@ -39,7 +39,7 @@ msg2 = 'there are %d good matches' % (len(good))
 print(msg1)
 print(msg2)
 
-img3 = cv.drawMatchesKnn(query_image,kp1,img2,kp2,good, None, flags=2)
+img3 = cv.drawMatchesKnn(query_image,kp1,train_image,kp2,good, None, flags=2)
 
 #font = cv.FONT_HERSHEY_SIMPLEX
 #cv.putText(img3,msg1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
