@@ -8,10 +8,19 @@ query_image = cv.imread('cam1.jpg',0)          # queryImage
 train_image = cv.imread('cad1.png',0)          # trainImage
 
 #print(query_image.shape)
+#print(train_image.shape)
+#print(query_image.size)
+#print(train_image.size)
 
-width = 800
-height = 600
+scale_percent = ((train_image.shape[1])/(query_image.shape[1]))/(50/100)
+
+width = int(query_image.shape[1] * scale_percent)
+height = int(query_image.shape[0] * scale_percent)
+
 query_image = cv.resize(query_image,(width,height))
+
+#print(query_image.shape)
+#print(query_image.size)
 
 method = 'ORB'  # 'SIFT'
 lowe_ratio = 0.80
@@ -44,9 +53,9 @@ print(msg2)
 
 img3 = cv.drawMatchesKnn(query_image,kp1,train_image,kp2,good, None, flags=2)
 
-#font = cv.FONT_HERSHEY_SIMPLEX
-#cv.putText(img3,msg1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
-#cv.putText(img3,msg2,(10, 270), font, 0.8,(255,0,255),1,cv.LINE_AA)
+font = cv.FONT_HERSHEY_SIMPLEX
+cv.putText(img3,msg1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
+cv.putText(img3,msg2,(10, 270), font, 0.8,(255,0,255),1,cv.LINE_AA)
 fname = 'output3_%s_%.2f.jpg' % (method, lowe_ratio)
 #cv.imwrite(fname, img3)
 cv.imwrite(os.path.join('./output', fname), img3)
