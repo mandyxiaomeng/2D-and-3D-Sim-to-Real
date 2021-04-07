@@ -13,10 +13,10 @@ def Matching (method, match, lowe_ratio):
     if match  == 'bf':
         matcher = cv.BFMatcher()
 
-    kp1, des1 = finder.detectAndCompute(query_image,None)
-    kp2, des2 = finder.detectAndCompute(train_image,None)
+    queryKeypoints, queryDescriptors = finder.detectAndCompute(query_image,None)
+    trainKeypoints, trainDescriptors = finder.detectAndCompute(train_image,None)
 
-    matches = matcher.knnMatch(des1,des2,k=2)
+    matches = matcher.knnMatch(queryDescriptors,trainDescriptors,k=2)
 
     # Apply ratio test
     good_matches= []
@@ -26,7 +26,7 @@ def Matching (method, match, lowe_ratio):
             good_matches.append([m])
     
 
-    return kp1, kp2, matches, good_matches
+    return queryKeypoints, trainKeypoints, matches, good_matches
 
 #read images
 query_image = cv.imread('cam1.jpg',0)          # queryImage
@@ -63,13 +63,13 @@ message_2 = 'there are %d good matches' % (len(good_matches))
 print(message_1)
 print(message_2)
 
-img3 = cv.drawMatchesKnn(query_image,kp1,train_image,kp2,good_matches, None, flags=2)
+output_image = cv.drawMatchesKnn(query_image,kp1,train_image,kp2,good_matches, None, flags=2)
 
 #print txt on the result image, save and plot result image
 font = cv.FONT_HERSHEY_SIMPLEX
-cv.putText(img3,message_1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
-cv.putText(img3,message_2,(10, 270), font, 0.8,(255,0,255),1,cv.LINE_AA)
+cv.putText(output_image,message_1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
+cv.putText(output_image,message_2,(10, 270), font, 0.8,(255,0,255),1,cv.LINE_AA)
 fname = 'output3_%s_%.2f.jpg' % (method, lowe_ratio)
-cv.imwrite(os.path.join('./output', fname), img3)
+cv.imwrite(os.path.join('./output', fname), output_image)
 
-plt.imshow(img3),plt.show()
+plt.imshow(output_image),plt.show()
