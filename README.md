@@ -15,5 +15,14 @@ Supervised learning: Using faster rcnn to detect images from the real production
 The step is to set the baseline of 2D domain adpatation.
 The introduction of running the code is in Faster RCNN.
 
+## 3. DA-detection
+Domain adaptation model 1:
+
+## 4. SCL-detection
+Domain adaptation model 2:
+
+## 5. OpenCV
+Image processing model
+
 
 
