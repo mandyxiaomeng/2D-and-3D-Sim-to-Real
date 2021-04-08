@@ -29,8 +29,8 @@ def Matching (method, match, lowe_ratio):
 
 
 #read images------------------------------------------
-query_image = cv.imread('cam1.jpg',0)          # queryImage
-train_image = cv.imread('cad1.png',0)          # trainImage
+query_image = cv.imread('./input/cam1.jpg',0)          # queryImage
+train_image = cv.imread('./input/cad1.png',0)          # trainImage
 
 
 # rize images-------------------------------------------
