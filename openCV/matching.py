@@ -25,15 +25,15 @@ def Matching (method, match, lowe_ratio):
         if m.distance < lowe_ratio*n.distance:
             good_matches.append([m])
     
-
     return queryKeypoints, trainKeypoints, matches, good_matches
 
-#read images
+
+#read images------------------------------------------
 query_image = cv.imread('cam1.jpg',0)          # queryImage
 train_image = cv.imread('cad1.png',0)          # trainImage
 
 
-# rize images
+# rize images-------------------------------------------
 #print(query_image.shape)
 #print(train_image.shape)
 #print(query_image.size)
@@ -44,11 +44,11 @@ width = int(query_image.shape[1] * scale_percent)
 height = int(query_image.shape[0] * scale_percent)
 
 query_image = cv.resize(query_image,(width,height))
-
 #print(query_image.shape)
 #print(query_image.size)
 
-#Matching images
+
+#Matching images------------------------------------------
 method = 'ORB'  # 'SIFT'
 match = 'bf'
 lowe_ratio = 0.80
@@ -56,7 +56,7 @@ lowe_ratio = 0.80
 kp1, kp2, matches, good_matches = Matching (method, match, lowe_ratio)
 
 
-#Result
+#Result----------------------------------------------------------
 message_1 = 'using %s with lowe_ratio %.2f' % (method, lowe_ratio)
 message_2 = 'there are %d good matches' % (len(good_matches))
 
@@ -69,7 +69,7 @@ output_image = cv.drawMatchesKnn(query_image,kp1,train_image,kp2,good_matches, N
 font = cv.FONT_HERSHEY_SIMPLEX
 cv.putText(output_image,message_1,(10, 250), font, 0.8,(255,0,255),1,cv.LINE_AA)
 cv.putText(output_image,message_2,(10, 270), font, 0.8,(255,0,255),1,cv.LINE_AA)
-fname = 'output3_%s_%.2f.jpg' % (method, lowe_ratio)
+fname = 'output_%s_%.2f.jpg' % (method, lowe_ratio)
 cv.imwrite(os.path.join('./output', fname), output_image)
 
 plt.imshow(output_image),plt.show()
