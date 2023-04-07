@@ -46,14 +46,16 @@ And possible cite our paper:
   year={2022},
   publisher={Elsevier}
 }
+```
 
-
->   title={Unsupervised domain adaptive object detection for assembly quality inspection},
->   author={Zhu, Xiaomeng and Maki, Atsuto and Hanson, Lars},
->   journal={Procedia CIRP},
->   volume={112},
->   pages={477--482},
->   year={2022},
->   publisher={Elsevier}
-> }
-
+```
+@article{zhu2022unsupervised,
+  title={Unsupervised domain adaptive object detection for assembly quality inspection},
+  author={Zhu, Xiaomeng and Maki, Atsuto and Hanson, Lars},
+  journal={Procedia CIRP},
+  volume={112},
+  pages={477--482},
+  year={2022},
+  publisher={Elsevier}
+}
+```
