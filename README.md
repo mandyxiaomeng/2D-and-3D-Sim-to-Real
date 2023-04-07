@@ -36,14 +36,17 @@ If you use this dataset in your research, please cite the orginal reference of t
 
 And possible cite our paper:
 
->   title={Automatic assembly quality inspection based on an unsupervised point cloud domain adaptation model},
->   author={Zhu, Xiaomeng and Manamasa, Himaja and S{\'a}nchez, Juan Luis Jim{\'e}nez and Maki, Atsuto and Hanson, Lars},
->   journal={Procedia CIRP},
->   volume={104},
->   pages={1801--1806},
->   year={2021},
->   publisher={Elsevier}
-> }
+```
+@article{zhu2022unsupervised,
+  title={Unsupervised domain adaptive object detection for assembly quality inspection},
+  author={Zhu, Xiaomeng and Maki, Atsuto and Hanson, Lars},
+  journal={Procedia CIRP},
+  volume={112},
+  pages={477--482},
+  year={2022},
+  publisher={Elsevier}
+}
+
 
 >   title={Unsupervised domain adaptive object detection for assembly quality inspection},
 >   author={Zhu, Xiaomeng and Maki, Atsuto and Hanson, Lars},
