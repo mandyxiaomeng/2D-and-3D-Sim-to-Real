@@ -16,7 +16,7 @@ The step is to set the baseline of 2D domain adpatation and apply the transfer l
 The introduction of running the code is in Faster RCNN.  
 
 ## 3. OpenCV
-Feature based image alignment model.   
+**Feature based image alignment model**.   
 
 The step is to try image matching without deep learning and see the results.   
 
