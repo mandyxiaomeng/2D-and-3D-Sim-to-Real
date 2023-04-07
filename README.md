@@ -34,7 +34,7 @@ The introduction of running the code is in pointnet++.
 ## Credits & How to Cite
 If you use this dataset in your research, please cite the orginal reference of the DA-detection, Faster RCNN, and PointNet. 
 
-And possible reference to our paper:
+And possible reference to our papers:
 
 ```
 @article{zhu2021automatic,
