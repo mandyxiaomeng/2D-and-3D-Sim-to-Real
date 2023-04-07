@@ -32,27 +32,25 @@ In order to compare 3D and 2D classification.
 The introduction of running the code is in pointnet++.  
 
 ## Credits & How to Cite
-If you use this dataset in your research, please cite the orginal paper and code of the DA-detection, Faster RCNN, and PointNet. 
+If you use this dataset in your research, please cite the orginal reference of the DA-detection, Faster RCNN, and PointNet. 
 
 And possible cite our paper:
 
-@article{zhu2021automatic,
-  title={Automatic assembly quality inspection based on an unsupervised point cloud domain adaptation model},
-  author={Zhu, Xiaomeng and Manamasa, Himaja and S{\'a}nchez, Juan Luis Jim{\'e}nez and Maki, Atsuto and Hanson, Lars},
-  journal={Procedia CIRP},
-  volume={104},
-  pages={1801--1806},
-  year={2021},
-  publisher={Elsevier}
-}
+>   title={Automatic assembly quality inspection based on an unsupervised point cloud domain adaptation model},
+>   author={Zhu, Xiaomeng and Manamasa, Himaja and S{\'a}nchez, Juan Luis Jim{\'e}nez and Maki, Atsuto and Hanson, Lars},
+>   journal={Procedia CIRP},
+>   volume={104},
+>   pages={1801--1806},
+>   year={2021},
+>   publisher={Elsevier}
+> }
 
-@article{zhu2022unsupervised,
-  title={Unsupervised domain adaptive object detection for assembly quality inspection},
-  author={Zhu, Xiaomeng and Maki, Atsuto and Hanson, Lars},
-  journal={Procedia CIRP},
-  volume={112},
-  pages={477--482},
-  year={2022},
-  publisher={Elsevier}
-}
+>   title={Unsupervised domain adaptive object detection for assembly quality inspection},
+>   author={Zhu, Xiaomeng and Maki, Atsuto and Hanson, Lars},
+>   journal={Procedia CIRP},
+>   volume={112},
+>   pages={477--482},
+>   year={2022},
+>   publisher={Elsevier}
+> }
 
