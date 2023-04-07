@@ -1,3 +1,5 @@
+# Automated Assembly Quality Inspection by Deep Learning with 2D and 3D Synthetic CAD Data
+
 # 2D-domain-adpatation
 Implement unsupervise domain adpatation and transfer learning models for object detection on industrial data to achieve assembly quality insecption. The models will be trained on synthetic images generated from Industrail CAD models, and make prediction on real images captured from the production line. 
 
