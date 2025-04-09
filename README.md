@@ -37,6 +37,17 @@ If you use this dataset in your research, please cite the orginal reference of t
 And possible reference to our papers:
 
 ```
+@article{zhu2024automated,
+  title={Automated assembly quality inspection by deep learning with 2D and 3D synthetic CAD data},
+  author={Zhu, Xiaomeng and M{\aa}rtensson, P{\"a}r and Hanson, Lars and Bj{\"o}rkman, M{\aa}rten and Maki, Atsuto},
+  journal={Journal of Intelligent Manufacturing},
+  pages={1--16},
+  year={2024},
+  publisher={Springer}
+}
+```
+
+```
 @article{zhu2021automatic,
   title={Automatic assembly quality inspection based on an unsupervised point cloud domain adaptation model},
   author={Zhu, Xiaomeng and Manamasa, Himaja and S{\'a}nchez, Juan Luis Jim{\'e}nez and Maki, Atsuto and Hanson, Lars},
